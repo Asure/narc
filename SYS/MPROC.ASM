@@ -15,10 +15,10 @@
 *
 *FILES REQUIRED FOR ASSEMBLY
 *
-        .INCLUDE	\video\GSP.INC	;GSP Assembler Equates
-        .INCLUDE	\video\SYS.INC	;Zunit System Equates
-	.INCLUDE	\video\MPROCEQU.ASM	;MPROC Equates
-	.INCLUDE	\video\DISPEQU.ASM
+        .include	..\sys\gsp.inc	;gsp assembler equates
+        .include	..\sys\sys.inc	;zunit system equates
+	.include	..\sys\mprocequ.asm	;mproc equates
+	.include	..\sys\dispequ.asm
 *
 *	SET UP FIXED PARAMETERS AT THE BEGINNING OF SCRATCHPAD
 *

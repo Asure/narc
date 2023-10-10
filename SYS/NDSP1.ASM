@@ -21,11 +21,11 @@
 *VERSION 3.2 BY EUGENE JARVIS 8/8/88	
 ****************************************
 *FILES REQUIRED FOR ASSEMBLY
-        .INCLUDE	\VIDEO\GSP.INC
-        .INCLUDE	\VIDEO\SYS.INC
-	.INCLUDE	\VIDEO\MACROS.HDR
-	.INCLUDE	\VIDEO\MPROCEQU.ASM
-	.INCLUDE	\VIDEO\DISPEQU.ASM
+        .include	..\sys\gsp.inc
+        .include	..\sys\sys.inc
+	.include	..\sys\macros.hdr
+	.include	..\sys\mprocequ.asm
+	.include	..\sys\dispequ.asm
 *
 *BULLET OBJECTS
 B1OID		EQU	00B10H		;OBJECT ID FOR PLAYER 1 BULLETS
