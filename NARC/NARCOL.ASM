@@ -11,11 +11,11 @@
 	.WIDTH	132
 	.MNOLIST
 
-	.INCLUDE	"\video\DISPEQU.ASM"	;Display processor equates
-	.INCLUDE	\video\MACROS.HDR
-	.INCLUDE	\video\GSP.INC
-	.INCLUDE	\video\sys.inc
-	.INCLUDE	\video\MPROCEQU.ASM
+	.include	"..\sys\dispequ.asm"	;display processor equates
+	.include	..\sys\macros.hdr
+	.include	..\sys\gsp.inc
+	.include	..\sys\sys.inc
+	.include	..\sys\mprocequ.asm
 	.INCLUDE	NARCEQU.ASM
 
 *

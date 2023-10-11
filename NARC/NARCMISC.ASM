@@ -3,12 +3,12 @@
 	.WIDTH	132
 	.OPTION	B,D,L,T
 	.MNOLIST
-        .INCLUDE	\VIDEO\GSP.INC
-        .INCLUDE	\VIDEO\SYS.INC
-	.INCLUDE	\VIDEO\MACROS.HDR
-	.INCLUDE	\VIDEO\MPROCEQU.ASM
+        .include	..\sys\gsp.inc
+        .include	..\sys\sys.inc
+	.include	..\sys\macros.hdr
+	.include	..\sys\mprocequ.asm
 	.INCLUDE	"NARCEQU.ASM"		;NARC Equates
-	.INCLUDE	\VIDEO\DISPEQU.ASM
+	.include	..\sys\dispequ.asm
 
 	.EVEN
 	.TEXT

@@ -5,9 +5,9 @@
 	.MNOLIST
 
 *	GET THE SYSTEM STUFF
-	.INCLUDE	"\video\MPROCEQU.ASM"	;MPROC equates
-	.INCLUDE	"\video\GSP.INC"	;GSP assembler equates
-	.INCLUDE	"\video\SYS.INC"	;Zunit system equates
+	.include	"..\sys\mprocequ.asm"	;mproc equates
+	.include	"..\sys\gsp.inc"	;gsp assembler equates
+	.include	"..\sys\sys.inc"	;zunit system equates
 *	LOCAL STUFF
 	.INCLUDE	"NARCEQU.ASM"		;NARC Equates
 	.INCLUDE	"IMGTBL.GLO"		;GLOBALS

@@ -10,9 +10,9 @@
 
 	.OPTION	B,D,L
 
-	.INCLUDE	"\VIDEO\SYS.INC"
-	.INCLUDE	"\VIDEO\GSP.INC"
-	.INCLUDE	"\VIDEO\MPROCEQU.ASM"
+	.include	"..\sys\sys.inc"
+	.include	"..\sys\gsp.inc"
+	.include	"..\sys\mprocequ.asm"
 	.INCLUDE	"NARCEQU.ASM"		;GET NARC EQUATES AND GLOBALS
 
 *

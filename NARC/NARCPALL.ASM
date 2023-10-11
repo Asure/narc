@@ -4,10 +4,10 @@
 	.OPTION	B,D,L,T
 	.MNOLIST
 
-	.INCLUDE	"\video\GSP.INC"	;GSP assembler equates
-	.INCLUDE	"\video\SYS.INC"	;Zunit system equates
-	.INCLUDE	"\video\MPROCEQU.ASM"
-	.INCLUDE	"\video\DISPEQU.ASM"
+	.include	"..\sys\gsp.inc"	;gsp assembler equates
+	.include	"..\sys\sys.inc"	;zunit system equates
+	.include	"..\sys\mprocequ.asm"
+	.include	"..\sys\dispequ.asm"
 	.INCLUDE	"NARCEQU.ASM"
 
 	.TEXT

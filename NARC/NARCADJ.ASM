@@ -18,11 +18,11 @@
 *          Larry DeMar    December 10, 1988                              *
 *                                                                        *
 **************************************************************************
-	.INCLUDE	"\video\MPROCEQU.ASM"	;MPROC equates
-	.INCLUDE	"\video\DISPEQU.ASM"
-	.INCLUDE	"\video\GSP.INC"	  ;GSP assembler equates
-	.INCLUDE	"\video\SYS.INC"    ;Zunit system equates
-	.INCLUDE	"\video\MACROS.HDR" ;Macros, Yeah!
+	.include	"..\sys\mprocequ.asm"	;mproc equates
+	.include	"..\sys\dispequ.asm"
+	.include	"..\sys\gsp.inc"	  ;gsp assembler equates
+	.include	"..\sys\sys.inc"    ;zunit system equates
+	.include	"..\sys\macros.hdr" ;macros, yeah!
 	.INCLUDE	"IMGTBL.GLO"		  ;GLOBALS
 *	LOCAL STUFF
 	.INCLUDE	"NARCEQU.ASM"		;NARC Equates
