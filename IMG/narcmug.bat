@@ -1,0 +1,1 @@
+load2.exe narcmug /P /di /fi /t=c:\tmp\narc /x /v
