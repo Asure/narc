@@ -1,3 +1,12 @@
+Updated 16-10-2023:
+- Player colors (proto/production red player 1) cab be set in NARCEQU.ASM
+- NARCDATA.ASM has the chopper wave as stage 1. Not sure if this where it needs to be.
+- BLUEP1 0 = red, 1 = blue.
+- Notice the non-implemented SNOWQUEEN in NARCMUGS.ASM (She's supposed to be RLE encoded into program rom.)
+- Notice the non-implemented GAY in NARCMUGS.LOD (Only the mug shot appears used.)
+- NARC1.IMG has some guy in yellow jumpsuit not used anywhere, YELNARC palette. Possible placeholder?
+- cars.img has an unused delivery truck, with doors opening, a driver etc.
+
 Updated version Nov 11 2023:
 - run fixer.py in SYS and NARC to update old GSP assembler format directives and constants to ones that work with 6.10
 - this will fix up the source files in the OLD folder and put them in the main folder
@@ -8,7 +17,7 @@ Updated version Nov 11 2023:
 - for MAME, rename the ROMs as follows:  
 	NARCFC.0 -> NARCREV7.U42, NARCFC.1 -> NARCREV7.U24,
 	NARCFE.0 -> NARCREV7.U41, NARCFE.1 -> NARCREV7.U23
-- or use rename.cmd in a cmd prompt
+- or use rename.cmd in a cmd prompt.
 
 current problems:
 - the DMA1 version of LOAD doesn't seem to be available anywhere, so I can't produce graphics ROMs until
