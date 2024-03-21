@@ -44,7 +44,7 @@ RECTANGL $MACRO NAME, COLOR, WIDTH, LENGTH, X, Y
 
          .SECT  "RECTS"
 
-         $IF NAME.A & $PCALL
+	.if ($symlen(NAME) > 0)
                .GLOBL :NAME:
 :NAME::        .WORD (:COLOR: * 256) + :COLOR:
          $ELSE
@@ -56,12 +56,12 @@ RECTANGL $MACRO NAME, COLOR, WIDTH, LENGTH, X, Y
          .WORD :X:
          .WORD :Y:
 
-         $END
+         $ENDM
 
 END_RECT $MACRO 
          .SECT "RECTS"
          .WORD 0
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACROS EXTRACT INDIVIDUAL FIELDS FROM A RECTANGLE RECORD   *
@@ -71,15 +71,15 @@ END_RECT $MACRO
 
 R_XYADR  $MACRO SRC, DST
          MOVE *:SRC:(R_XYAD), :DST:, 1
-         $END
+         $ENDM
 
 R_DIMEN  $MACRO SRC, DST
          MOVE *:SRC:(R_DYDX), :DST:, 1
-         $END
+         $ENDM
 
 R_COLOR  $MACRO SRC, DST
          MOVE *:SRC:(R_COLR), :DST:
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT RECTANGLE RECORD IS *
@@ -95,7 +95,7 @@ R_END    $MACRO SRC, LOCATION
          ADDI R_SIZE, :SRC:
          MOVE *:SRC:, SP
          JRNZ :LOCATION:
-         $END
+         $ENDM
 
         .PAGE
 
@@ -114,7 +114,7 @@ VECTOR   $MACRO NAME, COLOR, STARTX, STARTY, ENDX, ENDY
 
          .SECT "VECTS"
 
-         $IF NAME.A & $PCALL
+	.if ($symlen(NAME) > 0)
                .GLOBL :NAME:
 :NAME::        .WORD (:COLOR: * 256) + :COLOR:
          $ELSE
@@ -126,12 +126,12 @@ VECTOR   $MACRO NAME, COLOR, STARTX, STARTY, ENDX, ENDY
          .WORD :ENDX:
          .WORD :ENDY:
 
-         $END
+         $ENDM
 
 END_VECT $MACRO 
          .SECT "VECTS"
          .WORD 0
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACROS EXTRACT INDIVIDUAL FIELDS FROM A VECTOR RECORD      *
@@ -141,15 +141,15 @@ END_VECT $MACRO
 
 V_SADDR  $MACRO SRC, DST
          MOVE *:SRC:(V_SPNT), :DST:, 1
-         $END
+         $ENDM
 
 V_EADDR  $MACRO SRC, DST
          MOVE *:SRC:(V_EPNT), :DST:, 1
-         $END
+         $ENDM
 
 V_COLOR  $MACRO SRC, DST
          MOVE *:SRC:(V_COLR), :DST:
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT VECTOR RECORD IS    *
@@ -165,7 +165,7 @@ V_END    $MACRO SRC, LOCATION
          ADDI V_SIZE, :SRC:
          MOVE *:SRC:, SP
          JRNZ :LOCATION:
-         $END
+         $ENDM
 
         .PAGE
 
@@ -182,7 +182,7 @@ POINT    $MACRO NAME, COLOR, X, Y
 
          .SECT "POINTS"
 
-         $IF NAME.A & $PCALL
+	.if ($symlen(NAME) > 0)
                .GLOBL :NAME:
 :NAME::        .WORD (:COLOR: * 256) + :COLOR:
          $ELSE
@@ -192,12 +192,12 @@ POINT    $MACRO NAME, COLOR, X, Y
          .WORD :X:
          .WORD :Y:
 
-         $END
+         $ENDM
 
 END_PNT  $MACRO 
          .SECT "POINTS"
          .WORD 0
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACROS EXTRACT INDIVIDUAL FIELDS FROM A POINT RECORD       *
@@ -207,11 +207,11 @@ END_PNT  $MACRO
 
 P_XYADR  $MACRO SRC, DST
          MOVE *:SRC:(P_XYAD), :DST:, 1
-         $END
+         $ENDM
 
 P_COLOR  $MACRO SRC, DST
          MOVE *:SRC:(P_COLR), :DST:
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT POINT RECORD IS NOT *
@@ -227,7 +227,7 @@ P_END    $MACRO SRC, LOCATION
          ADDI P_SIZE, :SRC:
          MOVE *:SRC:, SP
          JRNZ :LOCATION:
-         $END
+         $ENDM
 
          .PAGE
 
@@ -241,16 +241,16 @@ P_END    $MACRO SRC, LOCATION
 ;*        TEXT  -- QUOTE ENCLOSED LABEL TEXT (LETTERS/DIGITS/SPACES ONLY)   *
 ;****************************************************************************
 
-LABEL    $MACRO NAME, COLOR, PATH, X, Y, TEXT
+LABEL    .MACRO NAME, COLOR, PATH, X, Y, TEXT
 
          .SECT "LABELS"
 
-         $IF NAME.A & $PCALL
+	.if ($symlen(NAME) > 0)
                .GLOBL :NAME:
 :NAME::        .WORD (:COLOR: * 256) + :COLOR:
-         $ELSE
+         .ELSE
                .WORD (:COLOR: * 256) + :COLOR:
-         $ENDIF
+         .ENDIF
 
          .WORD :PATH:
          .WORD :X:
@@ -258,22 +258,22 @@ LABEL    $MACRO NAME, COLOR, PATH, X, Y, TEXT
 
          .LONG END?
 
-         $IF TEXT.A & $PCALL
-               .STRING :TEXT:, 0
-         $ELSE
+	.if ($symlen(TEXT) > 0)
+               .STRING ":TEXT:", 0
+         .ELSE
                .BYTE 0
-         $ENDIF
+         .ENDIF
 
          .EVEN
 
 END?:
 
-         $END
+         .ENDM
 
 END_LABL $MACRO 
          .SECT "LABELS"
          .WORD 0
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACROS EXTRACT INDIVIDUAL FIELDS FROM A LABEL RECORD       *
@@ -283,20 +283,20 @@ END_LABL $MACRO
 
 L_XYADR $MACRO SRC, DST
         MOVE *:SRC:(L_XYAD), :DST:, 1
-        $END
+        $ENDM
 
 L_COLOR $MACRO SRC, DST
         MOVE *:SRC:(L_COLR), :DST:
-        $END
+        $ENDM
 
 L_DIREC $MACRO SRC, DST
         MOVE *:SRC:(L_PATH), :DST:
-        $END
+        $ENDM
 
 L_TXADR $MACRO SRC, DST
         MOVE  :SRC:, :DST:
         ADDI L_TEXT, :DST:
-        $END
+        $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT LABEL RECORD IS NOT *
@@ -312,7 +312,7 @@ L_END   $MACRO SRC, LOCATION
         MOVE *:SRC:(L_NEXT), :SRC:, 1
         MOVE *:SRC:, SP
         JRNZ :LOCATION:
-        $END
+        $ENDM
 
         .PAGE
 
@@ -327,29 +327,27 @@ L_END   $MACRO SRC, LOCATION
 ;*           R      -- CIRCLE RADIUS                                        *
 ;****************************************************************************
 
-CIRCLE   $MACRO NAME, COLOR, FILLV, X, Y, R
-
+CIRCLE   .MACRO NAME,COLOR,FILLV,X,Y,R
          .SECT  "CIRCLES"
-
-         $IF NAME.A & $PCALL
-               .GLOBL :NAME:
+	.if ($symlen(NAME) > 0)
+	.GLOBL :NAME:
 :NAME::        .WORD ((:COLOR: * 256) + :COLOR:)
                .WORD :FILLV:
-         $ELSE
+         .ELSE
                .WORD ((:COLOR:* 256) + :COLOR:)
                .WORD :FILLV:
-         $ENDIF
+         .ENDIF
 
          .WORD :X:
          .WORD :Y:
          .WORD :R:
 
-         $END
+         .ENDM
 
 END_CIRC $MACRO
          .SECT "CIRCLES"
          .WORD 0
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACROS EXTRACT INDIVIDUAL FIELDS FROM A CIRCLE RECORD      *
@@ -359,15 +357,15 @@ END_CIRC $MACRO
 
 C_COLOR $MACRO SRC, DST
         MOVE *:SRC:(C_COLR), :DST:, 1
-        $END
+        $ENDM
 
 C_XYADR $MACRO SRC, DST
         MOVE *:SRC:(C_XYAD), :DST:, 1
-        $END
+        $ENDM
 
 C_RDIUS $MACRO SRC, DST
         MOVE *:SRC:(C_RADI), :DST:
-        $END
+        $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT CIRCLE RECORD IS NOT*
@@ -383,6 +381,6 @@ C_END   $MACRO SRC, LOCATION
          ADDI C_SIZE, :SRC:
          MOVE *:SRC:, SP
          JRNZ :LOCATION:
-         $END
+         $ENDM
 
 

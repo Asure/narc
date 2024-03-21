@@ -2,13 +2,13 @@
 ;* TVMCHECK.ASM: TV MONITOR CHECK; FILE CONTAINS ALL MONITOR TESTS.         *
 ;****************************************************************************
 
-       .TITLE 'TVMCHECK'
+       .TITLE "TVMCHECK"
 	.WIDTH	132
 	.OPTION	B,D,L,T
 	.MNOLIST
 
-       .include \VIDEO\GSP.INC
-       .include \VIDEO\SYS.INC
+       .include ..\sys\gsp.inc
+       .include ..\sys\sys.inc
 
        .include SYSCHECK.SET
        .include SYSCHECK.GBL
@@ -38,7 +38,7 @@ $100:   V_SADDR A14, A0                 ; LOAD VECTOR PARAMETERS
         V_EADDR A14, A1
         V_COLOR A14, A2
 
-        FCALL HVLINE, B6
+        FCALL HVLINE,B6
 
         V_END A14, $100
 
@@ -52,16 +52,16 @@ $100:   V_SADDR A14, A0                 ; LOAD VECTOR PARAMETERS
 
 $200:   P_XYADR A14, A0                 ; UPPER LEFT
         P_COLOR A14, A1
-        FCALL POINT, B6
+        FCALL POINT,B6
 
         ADDXY A3, A0                    ; UPPER RIGHT
-        FCALL POINT, B6
+        FCALL POINT,B6
 
         ADDXY A2, A0                    ; LOWER RIGHT
-        FCALL POINT, B6, L
+        FCALL POINT,B6
 
         SUBXY A3, A0                    ; LOWER LEFT
-        FCALL POINT, B6, L
+        FCALL POINT, B6
 
         P_END A14, $200
 

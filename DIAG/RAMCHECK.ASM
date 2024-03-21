@@ -11,13 +11,13 @@
 ;*           USES:  A4 - A14, B0, B1, B6                                    *
 ;****************************************************************************
 
-        .TITLE 'RAMCHECK'
+        .TITLE "RAMCHECK"
 	.WIDTH	132
 	.OPTION	B,D,L,T
 	.MNOLIST
 
-        .include \VIDEO\SYS.INC
-        .include \VIDEO\GSP.INC
+        .include ..\sys\sys.inc
+        .include ..\sys\gsp.inc
 
         .include SYSCHECK.SET
         .include SYSCHECK.GBL

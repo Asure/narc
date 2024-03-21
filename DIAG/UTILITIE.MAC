@@ -4,14 +4,20 @@
 
 ;       FUNCTION CALL AND RETURN WITHOUT USING THE SYSTEM STACK
 
-FCALL   $MACRO NAME, BREG
-         MOVI  :NAME:, :BREG:, L
-         EXGPC :BREG:
-        $END
+;FCALL   .MACRO NAME,BREG
+;        MOVI  :NAME:,:BREG:,l
+;        EXGPC :BREG:
+;        .ENDM
+
+FCALL   .MACRO NAME,BREG
+        MOVI  :NAME:,:BREG:
+        EXGPC :BREG:
+        .ENDM
+
 
 FRET    $MACRO BREG
-         EXGPC :BREG:
-        $END
+        EXGPC :BREG:
+        $ENDM
 
 ;       TIMED PAUSE
 
@@ -19,7 +25,7 @@ PAUSE   $MACRO TIME, REG
          MOVI :TIME:, :REG:, L
 LABEL?:  NOP
          DSJS :REG:, LABEL?
-        $END
+        $ENDM
 
 ;       CLEAR SCREEN
 
@@ -29,6 +35,6 @@ CLEARSCR $MACRO
           MOVI  (BLACK * 256) + BLACK, A2
           MOVI  RECTANGLE, B6, L
           EXGPC B6
-         $END
+         $ENDM
 
 

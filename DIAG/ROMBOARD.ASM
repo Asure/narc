@@ -6,8 +6,8 @@
 ;* ROMBOARD.ASM: FILE DEFINES THE ROM BOARD SCHEMATIC.                      *
 ;****************************************************************************
 
-        .include \VIDEO\GSP.INC
-        .include \VIDEO\SYS.INC
+        .include ..\sys\gsp.inc
+        .include ..\sys\sys.inc
 
         .include SYSCHECK.SET
         .include SYSCHECK.GBL

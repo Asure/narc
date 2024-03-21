@@ -6,8 +6,8 @@
 ;* UTILITIES.ASM: FILE CONTAINS FREQUENTLY USED GENERAL PURPOSE FUNCTIONS.  *
 ;****************************************************************************
 
-        .include \VIDEO\SYS.INC
-        .include \VIDEO\GSP.INC
+        .include ..\sys\sys.inc
+        .include ..\sys\gsp.inc
 
         .include SYSCHECK.SET
         .include SYSCHECK.GBL

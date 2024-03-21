@@ -1,0 +1,269 @@
+TMS340 COFF Macro Assembler Version 6.10     Fri Mar 22 00:48:07 2024
+ Copyright (c) 1985-1991  Texas Instruments Incorporated 
+
+                                                                     PAGE    1
+
+       1                    
+       2                            .WIDTH  132
+       3                            .OPTION B,D,L,T
+       4                            .MNOLIST
+       5                    ;****************************************************************************
+       6                    ;* ROMCHIPS.ASM: SYSTEM ROMS; FILE DEFINES ALL PROGRAM AND IMAGE ROMS       *
+       7                    ;****************************************************************************
+       8                    
+       9                            .include \VIDEO\GSP.INC
+ *********  COPY FILE OPEN ERROR
+      10                            .include \VIDEO\SYS.INC
+ *********  COPY FILE OPEN ERROR
+LAST ERROR AT  9
+      11                    
+      12                            .include SYSCHECK.SET
+      13                            .include SYSCHECK.GBL
+      14                    
+      15                            .include ROMCHIPS.MAC
+      16                    
+      17                            .SECT "CHIPS"
+      18                            .EVEN
+      19                    
+      20                    ROMCHIPS:
+      21                    
+      22                    ;       PROGRAM ROMS
+      23                    
+      24                          .IF ROM512
+      25                    
+      26                    *
+      27                    *THIS IS THE TABLE FOR 512K BIT PROMS
+      28                    *
+      29                            ROM_CHIP 78, 8, 16, 0FF900000H, 0FF9FFFF0H, 0582CH
+      30                            ROM_CHIP 60, 8, 16, 0FF900008H, 0FF9FFFF8H, 0B76DH
+      31                    
+      32                            ROM_CHIP 77, 8, 16, 0FFA00000H, 0FFAFFFF0H, 0E448H
+      33                            ROM_CHIP 59, 8, 16, 0FFA00008H, 0FFAFFFF8H, 070BCH
+      34                    
+      35                            ROM_CHIP 42, 8, 16, 0FFD00000H, 0FFDFFFF0H, 0AD6FH
+      36                            ROM_CHIP 24, 8, 16, 0FFD00008H, 0FFDFFFF8H, 0087BH
+      37                    
+      38                            ROM_CHIP 41, 8, 16, 0FFE00000H, 0FFEFFFF0H, 0D396H
+      39                            ROM_CHIP 23, 8, 16, 0FFE00008H, 0FFEFFFF8H, 079BCH
+      40                    
+      41                          .ELSE     
+      42                    *
+      43                    *THIS IS THE TABLE FOR 1 MEGABIT PROMS
+      44                    *
+      45                            ROM_CHIP 78, 8, 16, 0FF900000H, 0FF9FFFF0H, 00000H
+      46                            ROM_CHIP 60, 8, 16, 0FF900008H, 0FF9FFFF8H, 00000H
+      47                    
+      48                            ROM_CHIP 77, 8, 16, 0FFA00000H, 0FFAFFFF0H, 00000H
+      49                            ROM_CHIP 59, 8, 16, 0FFA00008H, 0FFAFFFF8H, 00000H
+      50                    
+      51                            ROM_CHIP 42, 8, 16, 0FFC00000H, 0FFDFFFF0H, 02675H
+      52                            ROM_CHIP 24, 8, 16, 0FFC00008H, 0FFDFFFF8H, 051B9H
+TMS340 COFF Macro Assembler Version 6.10     Fri Mar 22 00:48:07 2024
+ Copyright (c) 1985-1991  Texas Instruments Incorporated 
+
+                                                                     PAGE    2
+
+      53                    
+      54                            ROM_CHIP 41, 8, 16, 0FFE00000H, 0FFFFFFF0H, 06F71H
+      55                            ROM_CHIP 23, 8, 16, 0FFE00008H, 0FFFFFFF8H, 09682H
+      56                    
+      57                          .ENDIF    
+      58                    ;       IMAGE ROMS
+      59                    
+      60                           .IF INTRLACE
+      61                    
+      62                    IMAGE_ROMS:                      ;***** LED CHANGE
+      63                            ROM_CHIP 94, 8, 32, 02000000H, 021FFFE0H, 04CFBH
+      64                            ROM_CHIP 76, 8, 32, 02000008H, 021FFFE8H, 01FB3H
+      65                            ROM_CHIP 58, 8, 32, 02000010H, 021FFFF0H, 0E817H
+      66                            ROM_CHIP 40, 8, 32, 02000018H, 021FFFF8H, 0CAEDH
+      67                    
+      68                            ROM_CHIP 93, 8, 32, 02200000H, 023FFFE0H, 092F7H ;***REAL ONE
+      69                    *        ROM_CHIP 93, 8, 32, 02200000H, 023FFFE0H, 0A1F8H  ;LED PHONEY ONE
+      70                            ROM_CHIP 75, 8, 32, 02200008H, 023FFFE8H, 0293FH
+      71                            ROM_CHIP 57, 8, 32, 02200010H, 023FFFF0H, 0D5F7H
+      72                            ROM_CHIP 39, 8, 32, 02200018H, 023FFFF8H, 0E364H
+      73                    
+      74                            ROM_CHIP 92, 8, 32, 02400000H, 025FFFE0H, 07F47H
+      75                            ROM_CHIP 74, 8, 32, 02400008H, 025FFFE8H, 0465CH
+      76                            ROM_CHIP 56, 8, 32, 02400010H, 025FFFF0H, 045B8H
+      77                            ROM_CHIP 38, 8, 32, 02400018H, 025FFFF8H, 028F3H
+      78                    
+      79                            ROM_CHIP 91, 8, 32, 02600000H, 027FFFE0H, 0B754H
+      80                            ROM_CHIP 73, 8, 32, 02600008H, 027FFFE8H, 0F030H
+      81                            ROM_CHIP 55, 8, 32, 02600010H, 027FFFF0H, 0FB1DH
+      82                            ROM_CHIP 37, 8, 32, 02600018H, 027FFFF8H, 0CBEEH
+      83                    
+      84                            ROM_CHIP 90, 8, 32, 02800000H, 029FFFE0H, 0A2E4H
+      85                            ROM_CHIP 72, 8, 32, 02800008H, 029FFFE8H, 0ECF2H
+      86                            ROM_CHIP 54, 8, 32, 02800010H, 029FFFF0H, 040BEH
+      87                            ROM_CHIP 36, 8, 32, 02800018H, 029FFFF8H, 0B6C4H
+      88                    
+      89                            ROM_CHIP 89, 8, 32, 02A00000H, 02BFFFE0H, 0D7F1H
+      90                            ROM_CHIP 71, 8, 32, 02A00008H, 02BFFFE8H, 0C162H
+      91                            ROM_CHIP 53, 8, 32, 02A00010H, 02BFFFF0H, 09B11H
+      92                            ROM_CHIP 35, 8, 32, 02A00018H, 02BFFFF8H, 09677H
+      93                    
+      94                            ROM_CHIP 88, 8, 32, 02C00000H, 02DFFFE0H, 06C5CH
+      95                            ROM_CHIP 70, 8, 32, 02C00008H, 02DFFFE8H, 057BDH
+      96                            ROM_CHIP 52, 8, 32, 02C00010H, 02DFFFF0H, 06D2EH
+      97                            ROM_CHIP 34, 8, 32, 02C00018H, 02DFFFF8H, 039F6H
+      98                    
+      99                            ROM_CHIP 87, 8, 32, 02E00000H, 02FFFFE0H, 0A110H
+     100                            ROM_CHIP 69, 8, 32, 02E00008H, 02FFFFE8H, 0D0E6H
+     101                            ROM_CHIP 51, 8, 32, 02E00010H, 02FFFFF0H, 0F077H
+     102                            ROM_CHIP 33, 8, 32, 02E00018H, 02FFFFF8H, 0A152H
+     103                    
+     104                            ROM_CHIP 86, 8, 32, 03000000H, 031FFFE0H, 03553H
+     105                            ROM_CHIP 68, 8, 32, 03000008H, 031FFFE8H, 030A2H
+     106                            ROM_CHIP 50, 8, 32, 03000010H, 031FFFF0H, 0EDF7H
+     107                            ROM_CHIP 32, 8, 32, 03000018H, 031FFFF8H, 092DEH
+TMS340 COFF Macro Assembler Version 6.10     Fri Mar 22 00:48:07 2024
+ Copyright (c) 1985-1991  Texas Instruments Incorporated 
+
+                                                                     PAGE    3
+
+     108                    
+     109                            ROM_CHIP 85, 8, 32, 03200000H, 033FFFE0H, 02F00H
+     110                            ROM_CHIP 67, 8, 32, 03200008H, 033FFFE8H, 0BDCFH
+     111                            ROM_CHIP 49, 8, 32, 03200010H, 033FFFF0H, 0C939H
+     112                            ROM_CHIP 31, 8, 32, 03200018H, 033FFFF8H, 03D8CH
+     113                    
+     114                            ROM_CHIP 84, 8, 32, 03400000H, 035FFFE0H, 05086H
+     115                            ROM_CHIP 66, 8, 32, 03400008H, 035FFFE8H, 028B1H
+     116                            ROM_CHIP 48, 8, 32, 03400010H, 035FFFF0H, 06741H
+     117                            ROM_CHIP 30, 8, 32, 03400018H, 035FFFF8H, 06C06H
+     118                    
+     119                            ROM_CHIP 83, 8, 32, 03600000H, 037FFFE0H, 021CDH
+     120                            ROM_CHIP 65, 8, 32, 03600008H, 037FFFE8H, 01DBAH
+     121                            ROM_CHIP 47, 8, 32, 03600010H, 037FFFF0H, 010B1H
+     122                            ROM_CHIP 29, 8, 32, 03600018H, 037FFFF8H, 0E0A6H
+     123                    
+     124                            ROM_CHIP 82, 8, 32, 03800000H, 039FFFE0H, 0BD5FH
+     125                            ROM_CHIP 64, 8, 32, 03800008H, 039FFFE8H, 04D06H
+     126                            ROM_CHIP 46, 8, 32, 03800010H, 039FFFF0H, 068DCH
+     127                            ROM_CHIP 28, 8, 32, 03800018H, 039FFFF8H, 0113EH
+     128                    
+     129                            ROM_CHIP 81, 8, 32, 03A00000H, 03BFFFE0H, 0DBE4H
+     130                            ROM_CHIP 63, 8, 32, 03A00008H, 03BFFFE8H, 0D1FFH
+     131                            ROM_CHIP 45, 8, 32, 03A00010H, 03BFFFF0H, 04F85H
+     132                            ROM_CHIP 27, 8, 32, 03A00018H, 03BFFFF8H, 04081H
+     133                    
+     134                            ROM_CHIP 80, 8, 32, 03C00000H, 03DFFFE0H, 02997H
+     135                            ROM_CHIP 62, 8, 32, 03C00008H, 03DFFFE8H, 07B81H
+     136                            ROM_CHIP 44, 8, 32, 03C00010H, 03DFFFF0H, 0149DH
+     137                            ROM_CHIP 26, 8, 32, 03C00018H, 03DFFFF8H, 00E8BH
+     138                    
+     139                            ROM_CHIP 79, 8, 32, 03E00000H, 03FFFFE0H, 00000H
+     140                            ROM_CHIP 61, 8, 32, 03E00008H, 03FFFFE8H, 00000H
+     141                            ROM_CHIP 43, 8, 32, 03E00010H, 03FFFFF0H, 00000H
+     142                            ROM_CHIP 25, 8, 32, 03E00018H, 03FFFFF8H, 00000H
+     143                    
+     144                    
+     145                           .ELSE
+     146                    IMAGE_ROMS:                      ;***** LED CHANGE
+     147                            ROM_CHIP 94, 8, 32, 02000000H, 021FFFE0H, 0B0CCH
+     148                            ROM_CHIP 76, 8, 32, 02000008H, 021FFFE8H, 07AEFH
+     149                            ROM_CHIP 58, 8, 32, 02000010H, 021FFFF0H, 04549H
+     150                            ROM_CHIP 40, 8, 32, 02000018H, 021FFFF8H, 02EA7H
+     151                    
+     152                            ROM_CHIP 93, 8, 32, 02200000H, 023FFFE0H, 0A1FAH ;***REAL ONE
+     153                    *        ROM_CHIP 93, 8, 32, 02200000H, 023FFFE0H, 0A1F8H  ;LED PHONEY ONE
+     154                            ROM_CHIP 75, 8, 32, 02200008H, 023FFFE8H, 039CEH
+     155                            ROM_CHIP 57, 8, 32, 02200010H, 023FFFF0H, 0E47DH
+     156                            ROM_CHIP 39, 8, 32, 02200018H, 023FFFF8H, 0EEF8H
+     157                    
+     158                            ROM_CHIP 92, 8, 32, 02400000H, 025FFFE0H, 09C46H
+     159                            ROM_CHIP 74, 8, 32, 02400008H, 025FFFE8H, 06374H
+     160                            ROM_CHIP 56, 8, 32, 02400010H, 025FFFF0H, 062E5H
+     161                            ROM_CHIP 38, 8, 32, 02400018H, 025FFFF8H, 047CAH
+     162                    
+TMS340 COFF Macro Assembler Version 6.10     Fri Mar 22 00:48:07 2024
+ Copyright (c) 1985-1991  Texas Instruments Incorporated 
+
+                                                                     PAGE    4
+
+     163                            ROM_CHIP 91, 8, 32, 02600000H, 027FFFE0H, 0B754H
+     164                            ROM_CHIP 73, 8, 32, 02600008H, 027FFFE8H, 0F030H
+     165                            ROM_CHIP 55, 8, 32, 02600010H, 027FFFF0H, 0FB1DH
+     166                            ROM_CHIP 37, 8, 32, 02600018H, 027FFFF8H, 0CBEEH
+     167                    
+     168                            ROM_CHIP 90, 8, 32, 02800000H, 029FFFE0H, 0A2E4H
+     169                            ROM_CHIP 72, 8, 32, 02800008H, 029FFFE8H, 0ECF2H
+     170                            ROM_CHIP 54, 8, 32, 02800010H, 029FFFF0H, 040BEH
+     171                            ROM_CHIP 36, 8, 32, 02800018H, 029FFFF8H, 0B6C4H
+     172                    
+     173                            ROM_CHIP 89, 8, 32, 02A00000H, 02BFFFE0H, 0D7F1H
+     174                            ROM_CHIP 71, 8, 32, 02A00008H, 02BFFFE8H, 0C162H
+     175                            ROM_CHIP 53, 8, 32, 02A00010H, 02BFFFF0H, 09B11H
+     176                            ROM_CHIP 35, 8, 32, 02A00018H, 02BFFFF8H, 09677H
+     177                    
+     178                            ROM_CHIP 88, 8, 32, 02C00000H, 02DFFFE0H, 06C5CH
+     179                            ROM_CHIP 70, 8, 32, 02C00008H, 02DFFFE8H, 057BDH
+     180                            ROM_CHIP 52, 8, 32, 02C00010H, 02DFFFF0H, 06D2EH
+     181                            ROM_CHIP 34, 8, 32, 02C00018H, 02DFFFF8H, 039F6H
+     182                    
+     183                            ROM_CHIP 87, 8, 32, 02E00000H, 02FFFFE0H, 0A110H
+     184                            ROM_CHIP 69, 8, 32, 02E00008H, 02FFFFE8H, 0D0E6H
+     185                            ROM_CHIP 51, 8, 32, 02E00010H, 02FFFFF0H, 0F077H
+     186                            ROM_CHIP 33, 8, 32, 02E00018H, 02FFFFF8H, 0A152H
+     187                    
+     188                            ROM_CHIP 86, 8, 32, 03000000H, 031FFFE0H, 03590H
+     189                            ROM_CHIP 68, 8, 32, 03000008H, 031FFFE8H, 030F3H
+     190                            ROM_CHIP 50, 8, 32, 03000010H, 031FFFF0H, 0EE28H
+     191                            ROM_CHIP 32, 8, 32, 03000018H, 031FFFF8H, 09326H
+     192                    
+     193                            ROM_CHIP 85, 8, 32, 03200000H, 033FFFE0H, 02F00H
+     194                            ROM_CHIP 67, 8, 32, 03200008H, 033FFFE8H, 0BDCFH
+     195                            ROM_CHIP 49, 8, 32, 03200010H, 033FFFF0H, 0C939H
+     196                            ROM_CHIP 31, 8, 32, 03200018H, 033FFFF8H, 03D8CH
+     197                    
+     198                            ROM_CHIP 84, 8, 32, 03400000H, 035FFFE0H, 05086H
+     199                            ROM_CHIP 66, 8, 32, 03400008H, 035FFFE8H, 028B1H
+     200                            ROM_CHIP 48, 8, 32, 03400010H, 035FFFF0H, 06741H
+     201                            ROM_CHIP 30, 8, 32, 03400018H, 035FFFF8H, 06C06H
+     202                    
+     203                            ROM_CHIP 83, 8, 32, 03600000H, 037FFFE0H, 068A2H
+     204                            ROM_CHIP 65, 8, 32, 03600008H, 037FFFE8H, 0D751H
+     205                            ROM_CHIP 47, 8, 32, 03600010H, 037FFFF0H, 0D5BCH
+     206                            ROM_CHIP 29, 8, 32, 03600018H, 037FFFF8H, 05EACH
+     207                    
+     208                            ROM_CHIP 82, 8, 32, 03800000H, 039FFFE0H, 0D5D9H
+     209                            ROM_CHIP 64, 8, 32, 03800008H, 039FFFE8H, 0AA0BH
+     210                            ROM_CHIP 46, 8, 32, 03800010H, 039FFFF0H, 03C7CH
+     211                            ROM_CHIP 28, 8, 32, 03800018H, 039FFFF8H, 0AEB5H
+     212                    
+     213                            ROM_CHIP 81, 8, 32, 03A00000H, 03BFFFE0H, 0BB25H
+     214                            ROM_CHIP 63, 8, 32, 03A00008H, 03BFFFE8H, 0A577H
+     215                            ROM_CHIP 45, 8, 32, 03A00010H, 03BFFFF0H, 0669BH
+     216                            ROM_CHIP 27, 8, 32, 03A00018H, 03BFFFF8H, 01034H
+     217                    
+TMS340 COFF Macro Assembler Version 6.10     Fri Mar 22 00:48:07 2024
+ Copyright (c) 1985-1991  Texas Instruments Incorporated 
+
+                                                                     PAGE    5
+
+     218                            ROM_CHIP 80, 8, 32, 03C00000H, 03DFFFE0H, 013D2H
+     219                            ROM_CHIP 62, 8, 32, 03C00008H, 03DFFFE8H, 00CD5H
+     220                            ROM_CHIP 44, 8, 32, 03C00010H, 03DFFFF0H, 052DBH
+     221                            ROM_CHIP 26, 8, 32, 03C00018H, 03DFFFF8H, 0A1EEH
+     222                    
+     223                            ROM_CHIP 79, 8, 32, 03E00000H, 03FFFFE0H, 00000H
+     224                            ROM_CHIP 61, 8, 32, 03E00008H, 03FFFFE8H, 00000H
+     225                            ROM_CHIP 43, 8, 32, 03E00010H, 03FFFFF0H, 00000H
+     226                            ROM_CHIP 25, 8, 32, 03E00018H, 03FFFFF8H, 00000H
+     227                    
+     228                           .ENDIF   
+     229                    
+     230                            END_CHIP
+     231                    
+     232                            .END
+     233                    
+     234                    
+     235                    
+     236                    
+     236                    
+ *********  MISSING .ENDM DIRECTIVE
+LAST ERROR AT  10
+
+ 3 Errors,  No Warnings

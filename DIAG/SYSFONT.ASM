@@ -4,7 +4,7 @@
 ;*	    DIAGNOSTICS.						    *
 ;****************************************************************************
 
-	  .TITLE 'SYSFONT'
+	  .TITLE "SYSFONT"
 	.WIDTH	132
 	.OPTION	B,D,L,T
 	.MNOLIST

@@ -1,4 +1,4 @@
-	.FILE	'SYSCHECK.ASM'
+	.FILE	"SYSCHECK.ASM"
 ;****************************************************************************
 ;* SYSCHECK: SYSTEM CHECK; 
 ;****************************************************************************
@@ -8,8 +8,8 @@
 	.OPTION	B,D,L,T
 	.MNOLIST
 
-          .INCLUDE \VIDEO\SYS.INC
-          .INCLUDE \VIDEO\GSP.INC
+          .include ..\sys\sys.inc
+          .include ..\sys\gsp.inc
 
           .INCLUDE "SYSCHECK.SET"
           .INCLUDE "SYSCHECK.GBL"

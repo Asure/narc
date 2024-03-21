@@ -31,7 +31,7 @@ RAM_CHIP $MACRO CHIP_NO, WIDTH, INTERLEAVE, START_ADDR, END_ADDR
          .LONG  RAM:CHIP_NO:              ; RECORD CORRESPONDING TO A RAM
                                           ; CHIP ICON
 
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO MARKS THE END OF ANY RAM CHIP TABLE.                 *
@@ -42,7 +42,7 @@ END_CHIP $MACRO
          .SECT  "CHIPS"
          .WORD  0
 
-         $END
+         $ENDM
 
         .PAGE
 
@@ -54,27 +54,27 @@ END_CHIP $MACRO
 
 RAMSADDR $MACRO SRC, DST
          MOVE *:SRC:(RAM_SADR), :DST:, 1
-         $END
+         $ENDM
 
 RAMEADDR $MACRO SRC, DST
          MOVE *:SRC:(RAM_EADR), :DST:, 1
-         $END
+         $ENDM
 
 RAMRLINK $MACRO SRC, DST
          MOVE *:SRC:(RAM_LINK), :DST:, 1
-         $END
+         $ENDM
 
 RAMNUMBR $MACRO SRC, DST
          MOVE *:SRC:(RAM_NMBR), :DST:
-         $END
+         $ENDM
 
 RAMINTLV $MACRO SRC, DST
          MOVE *:SRC:(RAM_ITLV), :DST:
-         $END
+         $ENDM
 
 RAMWIDTH $MACRO SRC, DST
          MOVE *:SRC:(RAM_WDTH), :DST:
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT CHIP RECORD IS NOT  *
@@ -90,6 +90,6 @@ RAMEND  $MACRO SRC, LOCATION
         ADDI RAM_SIZE, :SRC:
         MOVE *:SRC:, SP
         JRNZ :LOCATION:
-        $END
+        $ENDM
 
 

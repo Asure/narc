@@ -33,7 +33,7 @@ ROM_CHIP $MACRO CHIP_NO, WIDTH, INTERLEAVE, START_ADDR, END_ADDR, CHECK_SUM
          .LONG  ROM:CHIP_NO:              ; RECORD CORRESPONDING TO A ROM
                                           ; CHIP ICON
 
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO MARKS THE END OF ANY ROM CHIP TABLE.                 *
@@ -44,7 +44,7 @@ END_CHIP $MACRO
          .SECT "CHIPS"
          .WORD  0
 
-         $END
+         $ENDM
 
         .PAGE
 
@@ -56,31 +56,31 @@ END_CHIP $MACRO
 
 ROMSADDR $MACRO SRC, DST
          MOVE *:SRC:(ROM_SADR), :DST:, 1
-         $END
+         $ENDM
 
 ROMEADDR $MACRO SRC, DST
          MOVE *:SRC:(ROM_EADR), :DST:, 1
-         $END
+         $ENDM
 
 ROMRLINK $MACRO SRC, DST
          MOVE *:SRC:(ROM_LINK), :DST:, 1
-         $END
+         $ENDM
 
 ROMNUMBR $MACRO SRC, DST
          MOVE *:SRC:(ROM_NMBR), :DST:
-         $END
+         $ENDM
 
 ROMINTLV $MACRO SRC, DST
          MOVE *:SRC:(ROM_ITLV), :DST:
-         $END
+         $ENDM
 
 ROMWIDTH $MACRO SRC, DST
          MOVE *:SRC:(ROM_WDTH), :DST:
-         $END
+         $ENDM
 
 ROMCHKSM $MACRO SRC, DST
          MOVE *:SRC:(ROM_CKSM), :DST:
-         $END
+         $ENDM
 
 ;****************************************************************************
 ;* THE FOLLOWING MACRO JUMPS TO "LOCATION" IFF THE NEXT CHIP RECORD IS NOT  *
@@ -96,6 +96,6 @@ ROMEND  $MACRO SRC, LOCATION
         ADDI ROM_SIZE, :SRC:
         MOVE *:SRC:, SP
         JRNZ :LOCATION:
-        $END
+        $ENDM
 
 

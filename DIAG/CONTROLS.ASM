@@ -1,14 +1,14 @@
 
 	.WIDTH	132
 	.OPTION	B,D,L,T
-	.MNOLIST
+;	.MNOLIST
 ;****************************************************************************
 ;* CONTROLS.ASM: FILE DEFINES THE PLAYER CONTROL PANEL.                     *
 ;****************************************************************************
 
 
-        .include \VIDEO\GSP.INC
-        .include \VIDEO\SYS.INC
+        .include ..\sys\gsp.inc
+        .include ..\sys\sys.inc
 
         .include SYSCHECK.SET
         .include SYSCHECK.GBL
@@ -33,7 +33,7 @@ H1      .SET 40
 
 ;       RIGHT (1) JOYSTICK
 
-        CIRCLE , RED, FILL, JY1X, JY1Y, JY1R
+ CIRCLE , RED, FILL, JY1X, JY1Y, JY1R
 
         LABEL , BLACK, RIGHT, JY1X-11,  JY1Y-10, "JOY"
         LABEL , BLACK, RIGHT, JY1X-17,     JY1Y, "STICK"

@@ -6,8 +6,8 @@
 ;* ROMCHIPS.ASM: SYSTEM ROMS; FILE DEFINES ALL PROGRAM AND IMAGE ROMS       *
 ;****************************************************************************
 
-        .include \VIDEO\GSP.INC
-        .include \VIDEO\SYS.INC
+        .include ..\sys\gsp.inc
+        .include ..\sys\sys.inc
 
         .include SYSCHECK.SET
         .include SYSCHECK.GBL

@@ -3,13 +3,13 @@
 ;* ROMCHECK.ASM: ROM CHECK; MODULE VERIFIES THAT ALL SYSTEM ROMS FUNCTION.  *
 ;****************************************************************************
 
-        .TITLE 'ROMCHECK'
+        .TITLE "ROMCHECK"
 	.WIDTH	132
 	.OPTION	B,D,L,T
 	.MNOLIST
 
-        .include \VIDEO\GSP.INC
-        .include \VIDEO\SYS.INC
+        .include ..\sys\gsp.inc
+        .include ..\sys\sys.inc
 
         .include SYSCHECK.SET
         .include SYSCHECK.GBL
@@ -181,7 +181,7 @@ $030:
 *************************************************
 *************************************************
 ******
-******	   BEGIN CONDITIONAL CODE TO LET SINGLE BITS 0->1 CHANGE
+******	   BEGIN CONDITIONAL CODE TO LET SINGLE BITS 0-01H CHANGE
 ******     THROUGH!
 ******
 *************************************************
@@ -223,7 +223,7 @@ GIVE_ROM_ERROR
 *************************************************
 *************************************************
 ******
-******	   END CONDITIONAL CODE TO LET SINGLE BITS 0->1 CHANGE
+******	   END CONDITIONAL CODE TO LET SINGLE BITS 0-01H CHANGE
 ******     THROUGH!
 ******
 *************************************************
